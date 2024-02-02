@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Book-detail  {% endblock title %}
+
+{% block content %}
+  <h2>Landing page</h2>
+  <img style="width:200px; height:200px;" src="{{ sweet.image_sweet.url }}"><br>
+  {{ sweet.name }} <br>
+  {{ sweet.company }} <br>
+  {{ sweet.price }} <br>
+  {{ sweet.description }} <br>
+  {{ sweet.create_at }} <br>
+
+  <h3>Comments</h3>
+  {% for comment in comments %}
+    <p>{{ comment.comment }} - {{ comment.user.username }} at {{ comment.create_at }}</p>
+  {% endfor %}
+
+  <form method="post" action="{% url 'add_comment' sweet.id %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <button type="submit">Add Comment</button>
+  </form>
+
+  <a href="{% url 'sweet_list' %}">Sweet shop</a>
+{% endblock content %}

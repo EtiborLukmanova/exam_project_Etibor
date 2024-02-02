@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %} add sweet {% endblock title %}
+
+{% block content %}
+<h2>Add Sweet</h2>
+<form method="post" enctype="multipart/form-data"> {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Saqlash</button>
+
+</form>
+{% endblock content %}

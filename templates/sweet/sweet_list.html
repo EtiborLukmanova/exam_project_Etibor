@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Sweets  {% endblock title %}
+
+{% block content %}
+<h2>Landing page</h2>
+{% if user.is_superuser %}
+<a href="{% url 'add_sweet' %}">Add Sweets</a>
+{% endif %}
+{% for sweet in sweets %}
+<a href="{% url 'sweet_detail' sweet.pk %}">Sweet Detail</a>
+<img style="width:200px; height:200px" src="{{ sweet.sweet_image.url }}"><br>
+   <b> {{ sweet.name }} </b><hr>
+{% endfor %}
+{% endblock content %}
+

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+<h2>Landing page</h2>
+
+<p><a href="{% url 'sweet_list' %}"> Sweet shop </a></p>
+<p><a href="{% url 'logout' %}">Logout</a></p>
+<p><a href="{% url 'profile' %}">Profile</a> </p>
+{% endblock content %}
