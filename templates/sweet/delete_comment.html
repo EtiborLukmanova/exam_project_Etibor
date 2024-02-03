@@ -1,11 +1,13 @@
-{% extends 'base.html' %} {% block content %}
-<h2>
-  Haqiqatan ham {{ comment.user.name }}ni commentini o`chirib tashlamoqchimisiz?
-</h2>
-<form method="post" action="{% url 'delete_comment' comment.id %}">
-  {% csrf_token %}
-  <input type="submit" value="Delete" />
-</form>
-<br />
-<a href="{% url 'sweet' pk=comment.sweet.pk %}">Cancel</a>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>
+    Haqiqatan ham {{ comment.user.name }}ni commentini o`chirib tashlamoqchimisiz?
+  </h2>
+  <form method="post" action="{% url 'delete_comment' comment.id %}">
+    {% csrf_token %}
+    <input type="submit" value="Delete" style="color: red; font-weight: bold;">
+  </form>
+  <br />
+  <a href="{% url 'sweet' pk=comment.sweet.pk %}">Cancel</a>
 {% endblock %}

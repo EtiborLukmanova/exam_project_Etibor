@@ -97,53 +97,56 @@ class SweetDetailView(View):
 
 class AddCommentView(View):
     def get(self, request, pk):
-        form = CommentForm()
+        form = CommentForm()  # Use an empty form for GET requests
         return render(
-            request, "fruits/add_comment.html", {"form": form, "pk": pk}
+            request, "sweet/add_comment.html", {"form": form, "pk": pk}
         )
 
     def post(self, request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.sweet.pk = pk
+            sweet = get_object_or_404(Sweets, pk=pk)
+            comment.sweet = sweet
             comment.user = request.user
             comment.save()
-            return redirect("sweet", pk=pk)
+            return redirect("sweet_detail", pk=pk)
         return render(
-            request, "sweet/add_comment.html", {"form": form, "fruit_id": pk}
+            request, "sweet/add_comment.html", {"form": form, "pk": pk}
         )
 
 
 class DeleteCommentView(View):
     def get(self, request, pk):
-        comment = get_object_or_404(Sweets, id=pk)
+        comment = get_object_or_404(CustomUserComment, id=pk)
         return render(request, "sweet/delete_comment.html", {"comment": comment})
 
     def post(self, request, pk):
-        comment = get_object_or_404(Sweets, id=pk)
+        comment = get_object_or_404(CustomUserComment, id=pk)
         pk = comment.sweet.pk
         comment.delete()
-        return redirect("sweet", pk=pk)
+        return redirect("sweet_detail", pk=pk)
+
+
+
 
 
 class UpdateCommentView(View):
     def get(self, request, pk):
-        comment = get_object_or_404(Sweets, id=pk)
+        comment = get_object_or_404(CustomUserComment, id=pk)
         form = CommentUpdateForm(instance=comment)
         context = {"form": form, "comment": comment}
         return render(request, "sweet/update_comment.html", context=context)
 
     def post(self, request, pk):
-        comment = get_object_or_404(Sweets, id=pk)
+        comment = get_object_or_404(CustomUserComment, id=pk)
         form = CommentUpdateForm(request.POST, request.FILES, instance=comment)
         if form.is_valid():
             comment = form.save(commit=False)
             pk = comment.sweet.pk
             form.save()
-            return redirect("sweet", pk=pk)
+            return redirect("sweet_detail", pk=pk)
         context = {"form": form, "comment": comment}
         return render(request, "sweet/update_comment.html", context=context)
-
 
 

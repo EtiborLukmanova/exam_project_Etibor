@@ -1,0 +1,55 @@
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+*.pyo
+
+# Secret key file #
+secret_key.txt
+
+# Development #
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+*.log
+
+# Caches #
+*.pyc
+__pycache__/
+
+# Distribution / packaging #
+*.egg-info/
+dist/
+build/
+eggs/
+
+# Visual Studio Code #
+.vscode/
+
+# PyCharm #
+.idea/
+
+# Byte-compiled / optimized / DLL files #
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# macOS #
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails #
+._*
+
+# Files that might appear on external disk #
+.Spotlight-V100
+.Trashes
+
+# Directories #
+__pycache__/

@@ -32,6 +32,7 @@ class CommentForm(forms.ModelForm):
            'star_given',
         )
 
+
 class CommentUpdateForm(forms.ModelForm):
     class Meta:
         model = CustomUserComment

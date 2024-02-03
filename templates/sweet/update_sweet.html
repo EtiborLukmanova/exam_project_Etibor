@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Edit Profile</h2>
+  <h2>Edit Sweet</h2>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Update</button>
-</form>
-<a href="{% url 'sweet' sweet.pk %}">Cancel</a>
+  </form>
+  <a href="{% url 'sweet_detail' pk=sweet.pk %}">Cancel</a>
 {% endblock %}

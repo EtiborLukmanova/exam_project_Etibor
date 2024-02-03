@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Book-detail  {% endblock title %}
+{% block title %} Sweet-detail  {% endblock title %}
 
 {% block content %}
   <h2>Landing page</h2>
@@ -16,7 +16,7 @@
     <p>{{ comment.comment }} - {{ comment.user.username }} at {{ comment.create_at }}</p>
   {% endfor %}
 
-  <form method="post" action="{% url 'add_comment' sweet.id %}" enctype="multipart/form-data">
+  <form method="post" action="{% url 'add_comment' sweet.pk %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{ comment_form.as_p }}
     <button type="submit">Add Comment</button>
