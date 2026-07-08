@@ -21,7 +21,7 @@ class UpdateSweetView(LoginRequiredMixin, View):
         form = UpdateSweetForm(request.POST, request.FILES, instance=sweet_instance)
         if form.is_valid():
             form.save()
-            return redirect('sweets')
+            return redirect('sweet_list')
         return render(request, self.template_name, {'form': form, 'sweet': sweet_instance})
 
 
@@ -35,7 +35,7 @@ class DeleteSweetView(LoginRequiredMixin, View):
     def post(self, request, pk):
         sweet_instance = get_object_or_404(Sweets, pk=pk)
         sweet_instance.delete()
-        return redirect('sweets')
+        return redirect('sweet_list')
 
 
 class SweetListView(View):

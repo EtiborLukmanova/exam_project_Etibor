@@ -1,55 +1,29 @@
-# Django #
-*.log
-*.pot
-*.pyc
-__pycache__/
-db.sqlite3
-media/
-*.pyo
-
-# Secret key file #
+# Secrets - never commit these
+.env
 secret_key.txt
 
-# Development #
-*.pyc
-*.pyo
-*.db
-*.sqlite3
-*.log
-
-# Caches #
-*.pyc
-__pycache__/
-
-# Distribution / packaging #
-*.egg-info/
-dist/
-build/
-eggs/
-
-# Visual Studio Code #
-.vscode/
-
-# PyCharm #
-.idea/
-
-# Byte-compiled / optimized / DLL files #
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+env/
+venv/
+.venv/
 
-# macOS #
+# Django
+db.sqlite3
+staticfiles/
+media/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
 .DS_Store
 .AppleDouble
 .LSOverride
 
-# Thumbnails #
-._*
-
-# Files that might appear on external disk #
-.Spotlight-V100
-.Trashes
-
-# Directories #
-__pycache__/
+# Logs
+*.log
